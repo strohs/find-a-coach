@@ -1,0 +1,34 @@
+services:
+  frontend:
+    build: ./frontend-vue3
+    ports:
+      - "8080:80"
+    networks:
+      - findacoach
+
+  rest-api:
+    build: ./rest-api
+    ports:
+      - "8181:8181"
+    environment:
+      # rest api expects the mongo database to be named 'findACoachDB'
+      - MONGODB_URI=mongodb://root:password@mongodb:27017/findACoachDB?authSource=admin
+      - NODE_ENV=development
+    networks:
+      - findacoach
+
+  mongo:
+    image: mongo:4.2.8
+    ports:
+      - "27017-27019:27017-27019"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=findACoachDB
+    networks:
+      findacoach:
+        aliases:
+          - mongodb
+
+networks:
+  findacoach:

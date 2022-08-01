@@ -1,0 +1,31 @@
+{
+  "name": "vue3-vite",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@tailwindcss/forms": "^0.3.2",
+    "@vee-validate/rules": "^4.5.11",
+    "axios": "^0.27.2",
+    "vee-validate": "^4.5.11",
+    "vue": "^3.2.36",
+    "vue-router": "^4.0.15",
+    "vuejs3-logger": "1.0.0",
+    "vuex": "^4.0.2",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.3",
+    "@vue/compiler-sfc": "^3.2.36",
+    "autoprefixer": "^10.4.7",
+    "generate-random-data": "^0.0.3",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^2.1.1",
+    "typescript": "^4.7.2",
+    "vite": "^2.9.9",
+    "vue-tsc": "^0.34.16"
+  }
+}
