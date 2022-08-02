@@ -8,9 +8,7 @@ on:
 jobs:
   front_end_build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: frontend-vue3
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -27,7 +25,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: .
-          file: ./Dockerfile
+          context: ./frontend-vue3
+          file: ./frontend-vue3/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/find-a-coach-frontend:latest
