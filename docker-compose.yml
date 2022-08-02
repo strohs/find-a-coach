@@ -17,7 +17,9 @@ services:
       - MONGODB_URI=mongodb://root:password@mongodb:27017/findACoachDB?authSource=admin
       - NODE_ENV=development
     networks:
-      - findacoach
+      findacoach:
+        aliases:
+            - restapi
 
   mongo:
     image: mongo:4.2.8

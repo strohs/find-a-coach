@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 // load environment variables first
 dotenv.config();
 
-// possibly refactor into a separate configs dir
+// possibly refactor each config into a sep. dir
 import express from 'express';
 import * as http from 'http';
 import * as winston from 'winston';

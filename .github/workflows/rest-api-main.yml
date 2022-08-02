@@ -30,4 +30,4 @@ jobs:
           context: ./rest-api
           file: ./rest-api/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/find-a-coach-frontend:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/find-a-coach-rest-server:latest
