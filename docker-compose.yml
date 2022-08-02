@@ -1,7 +1,7 @@
 services:
   frontend:
     # build: ./frontend-vue3
-    image: strohs/findacoach-frontend
+    image: strohs/find-a-coach-frontend
     ports:
       - "8080:80"
     networks:
@@ -9,7 +9,7 @@ services:
 
   rest-api:
     # build: ./rest-api
-    image: strohs/findacoach-rest-server
+    image: strohs/find-a-coach-rest-server
     ports:
       - "8181:8181"
     environment:

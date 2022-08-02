@@ -1,3 +1,5 @@
+![example workflow](https://github.com/strohs/find-a-coach/actions/workflows/main.yml/badge.svg)
+
 Find A Coach
 ==============================================================================
 "Find-A-Coach" is a full stack web-application consisting of a Vue3 frontend, Rest API running on top of express.js 
