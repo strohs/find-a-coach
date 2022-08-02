@@ -38,7 +38,7 @@ jobs:
         id: docker_build_frontend
         uses: docker/build-push-action@v3.1.0
         with:
-          context: ./
+          context: .
           file: ./frontend-vue3/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
