@@ -1,8 +1,10 @@
 name: Find-A-Coach Frontend CI to DockerHub
 
-# Controls when the workflow will run
+# run when anything is changed in the frontend-vue3 directory, on the main branch
 on:
   push:
+    paths:
+      - 'frontend-vue3/**'
     branches: ["main"]
 
 jobs:
