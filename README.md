@@ -1,4 +1,5 @@
 ![example workflow](https://github.com/strohs/find-a-coach/actions/workflows/frontend-main.yml/badge.svg)
+![example workflow](https://github.com/strohs/find-a-coach/actions/workflows/rest-api-main.yml/badge.svg)
 
 Find A Coach
 ==============================================================================

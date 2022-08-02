@@ -1,0 +1,33 @@
+name: Find-A-Coach Rest API Server CI to DockerHub
+
+# run when anything is changed in the rest-api directory, on the main branch
+on:
+  push:
+    paths:
+      - 'rest-api/**'
+    branches: ["main"]
+
+jobs:
+  rest_api_build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: ./rest-api
+          file: ./rest-api/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/find-a-coach-frontend:latest
