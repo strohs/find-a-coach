@@ -44,14 +44,15 @@ class CoachesMiddleware {
         try {
             // the filter names we will accept, all others are ignored
             const allowedFilterParams = ['email', 'expertise', 'firstName', 'lastName', 'createdAt', 'description', 'hourlyRate'];
-            let params = aqp(req.query, {
+            const params = aqp(req.query, {
                 // page mapped to skip
                 skipKey: 'page',
                 whitelist: allowedFilterParams,
             });
 
             // default the limit to 10 and skip to 1 if they were not passed
-            params = { limit: 10, skip: 1, ...params };
+            params.limit = params.limit ?? 10;
+            params.skip = params.skip ?? 1;
             log(`aqp query object is`, params);
 
             // validate limit and page

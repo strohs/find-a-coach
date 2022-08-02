@@ -18,7 +18,7 @@ class WeeklyCoachingRequestsMiddleware {
         try {
             // the filter names we will accept, all others are ignored
             const allowedFilterParams = [ 'yearWeek' ];
-            let params = aqp(req.query, {
+            const params = aqp(req.query, {
                 // page parameter will be mapped to "skip"
                 skipKey: 'page',
                 whitelist: allowedFilterParams,
@@ -27,7 +27,8 @@ class WeeklyCoachingRequestsMiddleware {
             log(`validateQueryParams: aqp query object is`, params);
 
             // set defaults for limit, skip
-            params = {limit: 100, skip: 1, ...params};
+            params.limit = params.limit ?? 100;
+            params.skip = params.skip ?? 1;
 
             // validate limit and page
             if (params.limit < 1 || params.limit > 1000) {

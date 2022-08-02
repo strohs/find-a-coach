@@ -5,8 +5,8 @@ import debug from "debug";
 
 const log: debug.IDebugger = debug('app:token');
 
-const SIGNING_SECRET: Secret = process.env.TOKEN_SIGNING_SECRET!;
-const DEFAULT_EXPIRATION_MS: string = process.env.DEFAULT_TOKEN_EXPIRATION_MS!;
+const SIGNING_SECRET: Secret = process.env.TOKEN_SIGNING_SECRET ?? "somesupersecretstring";
+const DEFAULT_EXPIRATION_MS: string = process.env.DEFAULT_TOKEN_EXPIRATION_MS ?? "3600000";
 
 /**
  * The Token class is responsible for generating and also validating the JSON web tokens issued to end users
@@ -17,7 +17,7 @@ export default class Token {
     /**
      * generates a token string from the supplied TokenData and expiration time
      * @param data a TokenData object containing the data to include in the payload of the token
-     * @param expiresIn the time until this token will expire, in milli-seconds
+     * @param expiresIn the time until this token will expire, in milliseconds
      */
     static async generate(data: TokenData, expiresIn = DEFAULT_EXPIRATION_MS ): Promise<string> {
         const token = jwt.sign(data, SIGNING_SECRET, { expiresIn: expiresIn });
@@ -53,7 +53,7 @@ export default class Token {
             } else {
                 throw new ApiError(500,
                     ``,
-                    `unknown token error during token validation for JWT=${token}, ${e.message}`);
+                    `unknown token error during token validation for JWT=${token}, ${e}`);
             }
         }
     }

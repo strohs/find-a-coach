@@ -26,7 +26,7 @@ class CoachingRequestsMiddleware {
         try {
             // the filter names we will accept, all others are ignored
             const allowedFilterParams = ['fromEmail', 'createdAt', 'coachId', 'message', 'reply', 'replyAt'];
-            let params = aqp(req.query, {
+            const params = aqp(req.query, {
                 // page mapped to skip
                 skipKey: 'page',
                 whitelist: allowedFilterParams,
@@ -49,7 +49,8 @@ class CoachingRequestsMiddleware {
             }
 
             // default limit parameter to 50 and skip to 1 if they were not passed
-            params = { limit: 50, skip: 1, ...params };
+            params.limit = params.limit ?? 50;
+            params.skip = params.skip ?? 1;
 
             log(`aqp query object is`, params);
 

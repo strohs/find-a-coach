@@ -4,6 +4,7 @@ import * as EmailValidator from "email-validator";
 import bcrypt from "bcryptjs";
 import ApiError from "../../common/errors/ApiError";
 import {validateStringLength} from "../../common/validators/validators";
+import {Error} from "mongoose";
 
 const log: debug.IDebugger = debug('app:login-middleware');
 
@@ -59,7 +60,10 @@ class LoginMiddleware {
                 next();
             } catch (e) {
                 log(`ERROR: trying to bcrypt password:${req.body.password}`, e);
-                throw new ApiError(500, ``, e.message);
+                if (e instanceof Error) {
+                    throw new ApiError(500, ``, e.message);
+                }
+
             }
 
         } else {
