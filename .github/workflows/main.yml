@@ -6,8 +6,9 @@ on:
     branches: ["main"]
 
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+defaults:
+  run:
+    working-directory: frontend-vue3
 
 jobs:
   front_end_build:
@@ -35,11 +36,11 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       - name: Build Frontend and push
-        id: docker_build_frontend
+        id: docker_build
         uses: docker/build-push-action@v3.1.0
         with:
-          context: ./
-          file: ./frontend-vue3/Dockerfile
+          context: .
+          file: ./Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/find-a-coach-frontend:latest
