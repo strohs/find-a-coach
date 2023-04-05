@@ -6,8 +6,8 @@ Find A Coach
 "Find-A-Coach" is a full stack web-application consisting of a Vue3 frontend, Rest API running on top of express.js 
 and using MongoDB as the datastore.
 
-The app itself is simple CRUD application for a fictitious company named Find-A-Coach.  Find-A-Coach is a sort of
-broker that connects "coaches" with customers in need of coaching in different technologies, for example, 
+The app itself is a proof-of-cocept CRUD application for a fictitious company named Find-A-Coach.  Find-A-Coach is a "people broker"
+that connects "coaches" with customers in need of coaching in different technologies, for example, 
 javascript or AWS. 
 
 The website lets customers browse a table of available coaches or search for coaches by expertise. 
